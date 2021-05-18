@@ -11,12 +11,14 @@ async function run() {
     const files = [`${rootDirectory}/payload.json`];
     const results = gradeLearner();
 
-    fs.writeFileSync(files[0], JSON.stringify(results), "utf8");
+    fs.writeFileSync("payload.json", JSON.stringify(results), "utf8");
     const uploadResult = await artifactClient.uploadArtifact(
       artifactName,
       files,
       rootDirectory
     );
+
+    core.info(uploadResult);
   } catch (error) {
     // if error, set the payload artifact to represent the error
     core.setFailed(error);
