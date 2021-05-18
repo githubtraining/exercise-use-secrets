@@ -1,4 +1,4 @@
-const artifact = require("@actions/artifacts");
+const artifact = require("@actions/artifact");
 const core = require("@actions/core");
 const fs = require("fs");
 const gradeLearner = require("./lib/gradeLearner");
