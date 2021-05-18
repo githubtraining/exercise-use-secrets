@@ -1,0 +1,22 @@
+name: CI for local check-secrets-action
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  run-tests:
+    if: github.repository == 'githubtraining/lab-use-secrets'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .github/actions/check-secrets-action
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: run tests
+        run: npm run test
