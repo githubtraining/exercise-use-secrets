@@ -1,0 +1,15 @@
+name: check-secrets-action
+author: mattdavis0351
+description: validation action for this lab
+
+inputs:
+  your-secret:
+    description: The GitHub Actions secret containing your username MY_USERNAME
+    required: true
+  secrets-context:
+    description: The GitHub Actions secrets context object
+    required: true
+
+runs:
+  using: node12
+  main: "dist/index.js"
