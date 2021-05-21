@@ -505,7 +505,7 @@ module.exports = async (owner, repo, token) => {
             filename: ".github/workflows/use-secrets.yml",
             isCorrect: false,
             display_type: "actions",
-            level: "warning",
+            level: "fatal",
             msg: "Incorrect Solution",
             error: {
               expected: "Your repository should contain at least one secret.",
