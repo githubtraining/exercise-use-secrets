@@ -1,14 +1,13 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 
-module.exports = () => {
+module.exports = async (owner, repo, token) => {
   // if it has less than 1 secret... set the payload artifact to incorrect, no secret exists
   // return
   try {
     const secretsContext = core.getInput("secrets-context");
-    const username = core.getInput("your-secret");
     const keysFromCtx = Object.keys(JSON.parse(secretsContext));
-    const githubContext = github.context;
+
     if (!repoHasExtraSecrets(keysFromCtx)) {
       return {
         reports: [
@@ -19,7 +18,7 @@ module.exports = () => {
             level: "warning",
             msg: "Incorrect Solution",
             error: {
-              expected: "Your repository to contain at least one secret.",
+              expected: "Your repository should contain at least one secret.",
               got: "Your repository does not contain any secrets",
             },
           },
@@ -27,28 +26,12 @@ module.exports = () => {
       };
     }
 
-    // if the secret does not have proper name... set the payload artifact to incorrect, wrong secret
-    // return
-    if (!properSecretExists(keysFromCtx)) {
-      return {
-        reports: [
-          {
-            filename: ".github/workflows/use-secrets.yml",
-            isCorrect: false,
-            display_type: "actions",
-            level: "warning",
-            msg: "Incorrect Solution",
-            error: {
-              expected: "Your secret to be named MY_USERNAME",
-              got: "An invalid value",
-            },
-          },
-        ],
-      };
-    }
     // if the value is not the username... set the payload artifact to incorrect, wrong value
-    // return
-    if (!properSecretValue(username, githubContext)) {
+    // return00
+
+    const secretValueStatusCode = await properSecretValue(token, owner, repo);
+
+    if (secretValueStatusCode !== 204) {
       return {
         reports: [
           {
@@ -56,11 +39,10 @@ module.exports = () => {
             isCorrect: false,
             display_type: "actions",
             level: "warning",
-            msg: "Incorrect Solution",
+            msg: "Solution COULD be incorrect",
             error: {
-              expected:
-                "Your MY_USERNAME secret to match your GitHub username.",
-              got: `${githubContext.actor}`,
+              expected: "HTTP response of 204",
+              got: `HTTP response of ${secretValueStatusCode} which could indicate an internal error.  Please open an issue at: https://github.com/githubtraining/lab-use-secrets and let us know!  Thank you`,
             },
           },
         ],
@@ -84,21 +66,7 @@ module.exports = () => {
       ],
     };
   } catch (error) {
-    return {
-      reports: [
-        {
-          filename: ".github/workflows/use-secrets.yml",
-          isCorrect: false,
-          display_type: "actions",
-          level: "fatal",
-          msg: "",
-          error: {
-            expected: "",
-            got: "An internal error occurred.  Please open an issue at: https://github.com/githubtraining/lab-use-secrets and let us know!  Thank you",
-          },
-        },
-      ],
-    };
+    return error;
   }
 };
 
@@ -106,10 +74,66 @@ function repoHasExtraSecrets(keysFromCtx) {
   return keysFromCtx.length > 1;
 }
 
-function properSecretExists(keysFromCtx) {
-  return keysFromCtx.includes("my_username");
-}
-
-function properSecretValue(username, ctx) {
-  return username === ctx.actor;
+async function properSecretValue(token, owner, repo) {
+  try {
+    const octokit = github.getOctokit(token);
+    const response = await octokit.rest.repos.createDispatchEvent({
+      owner,
+      repo,
+      event_type: "token_check",
+    });
+    // we don't get resp with bad token because createDisEvent throws error with bad creds
+    return response.status;
+  } catch (error) {
+    if (error.message !== "Bad credentials") {
+      throw {
+        reports: [
+          {
+            filename: ".github/workflows/use-secrets.yml",
+            isCorrect: false,
+            display_type: "actions",
+            level: "warning",
+            msg: "",
+            error: {
+              expected: "",
+              got: "An internal error occurred.  Please open an issue at: https://github.com/githubtraining/lab-use-secrets and let us know!  Thank you",
+            },
+          },
+        ],
+      };
+    } else if (error.message === "Parameter token or opts.auth is required") {
+      throw {
+        reports: [
+          {
+            filename: ".github/workflows/use-secrets.yml",
+            isCorrect: false,
+            display_type: "actions",
+            level: "warning",
+            msg: "Incorrect Solution",
+            error: {
+              expected: "We expected your secret to contain a value",
+              got: `A null value for the secret supplied at your-secret`,
+            },
+          },
+        ],
+      };
+    } else {
+      throw {
+        reports: [
+          {
+            filename: ".github/workflows/use-secrets.yml",
+            isCorrect: false,
+            display_type: "actions",
+            level: "fatal",
+            msg: "Incorrect Solution",
+            error: {
+              expected:
+                "Your secret to contain a Personal Access Token with the repo scope.",
+              got: `${error.message}`,
+            },
+          },
+        ],
+      };
+    }
+  }
 }
