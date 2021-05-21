@@ -1,32 +1,30 @@
-const artifact = require("@actions/artifact");
 const core = require("@actions/core");
-const fs = require("fs");
+const github = require("@actions/github");
 const gradeLearner = require("./lib/gradeLearner");
 
 async function run() {
   try {
-    const artifactClient = artifact.create();
-    const artifactName = "payload";
-    const rootDirectory = "payload-dir";
-    const files = [`${rootDirectory}/payload.json`];
-    const results = gradeLearner();
+    const token = core.getInput("your-secret");
+    const { owner, repo } = github.context.repo;
+    const results = await gradeLearner(owner, repo, token);
+    if (results.reports[0].level === "fatal") {
+      throw JSON.stringify(results.reports[0].error);
+    }
 
-    fs.mkdirSync(rootDirectory);
-    fs.writeFileSync(files[0], JSON.stringify(results), "utf8");
-    const uploadResult = await artifactClient.uploadArtifact(
-      artifactName,
-      files,
-      rootDirectory
-    );
+    const octokit = github.getOctokit(token);
 
-    core.info(uploadResult);
+    const response = await octokit.rest.repos.createDispatchEvent({
+      owner,
+      repo,
+      event_type: "grading",
+      client_payload: { reports: results },
+    });
+    if (response.status !== 204) {
+      throw `response status code was not 201\nreceieved code: ${response.status}`;
+    }
   } catch (error) {
-    // if error, set the payload artifact to represent the error
     core.setFailed(error);
   }
 }
-// Verify a secret named MY_USERNAME exists
-// validate the value of that secret
-// set the artifact from the action
 
 run();

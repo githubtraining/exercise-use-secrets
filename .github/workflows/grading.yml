@@ -1,31 +1,19 @@
 name: Grading workflow
 on:
-  workflow_run:
-    workflows: ["Use Secrets"]
-    types:
-      - completed
+  repository_dispatch:
+    types: ["grading"]
   workflow_dispatch:
 
 jobs:
   grade-learner:
-    if: github.event_name == 'workflow_run'
+    if: github.event_name == 'repository_dispatch'
     runs-on: ubuntu-latest
     steps:
-      # Pull down the payload artifact
-      # pass it to LG
-      - uses: actions/download-artifact@v2
-        with:
-          name: payload.json
-          path: payload-dir
-      - name: pass artifact to Looking Glass
-        id: events
-        run: |
-          echo "::set-output name=reports::$(cat payload-dir/payload.json)"
       - name: Grading results
         uses: githubtraining/looking-glass-action@v0.1.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
-          feedback: ${{ steps.events.outputs.reports }}
+          feedback: ${{ toJSON(github.event.client_payload.reports) }}
   troubleshoot-activity:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest

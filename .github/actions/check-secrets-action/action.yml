@@ -4,7 +4,7 @@ description: validation action for this lab
 
 inputs:
   your-secret:
-    description: The GitHub Actions secret containing your username MY_USERNAME
+    description: A Personal Access Token with the repo scope stored as a secret
     required: true
   secrets-context:
     description: The GitHub Actions secrets context object
