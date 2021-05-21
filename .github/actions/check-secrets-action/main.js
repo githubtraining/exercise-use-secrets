@@ -7,8 +7,11 @@ async function run() {
     const token = core.getInput("your-secret");
     const { owner, repo } = github.context.repo;
     const results = await gradeLearner(owner, repo, token);
-    if (results.reports[0].level === "fatal") {
-      throw JSON.stringify(results.reports[0].error);
+    if (
+      results.reports[0].level === "fatal" ||
+      results.reports[0].msg === "Invalid token"
+    ) {
+      throw `We expected: ${results.reports[0].error.expected}\nWe received: ${results.reports[0].error.got}`;
     }
 
     const octokit = github.getOctokit(token);

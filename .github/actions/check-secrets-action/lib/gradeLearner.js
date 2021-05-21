@@ -85,14 +85,17 @@ async function properSecretValue(token, owner, repo) {
     // we don't get resp with bad token because createDisEvent throws error with bad creds
     return response.status;
   } catch (error) {
-    if (error.message !== "Bad credentials") {
+    if (
+      error.message !== "Bad credentials" &&
+      error.message !== "Parameter token or opts.auth is required"
+    ) {
       throw {
         reports: [
           {
             filename: ".github/workflows/use-secrets.yml",
             isCorrect: false,
             display_type: "actions",
-            level: "warning",
+            level: "fatal",
             msg: "",
             error: {
               expected: "",
@@ -108,11 +111,11 @@ async function properSecretValue(token, owner, repo) {
             filename: ".github/workflows/use-secrets.yml",
             isCorrect: false,
             display_type: "actions",
-            level: "warning",
-            msg: "Incorrect Solution",
+            level: "fatal",
+            msg: "Incorrect solution",
             error: {
               expected: "We expected your secret to contain a value",
-              got: `A null value for the secret supplied at your-secret`,
+              got: `A null value for the secret supplied at your-secret, which most likely means the secret doesn't exist.`,
             },
           },
         ],
