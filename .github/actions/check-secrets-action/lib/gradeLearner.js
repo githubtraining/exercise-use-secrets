@@ -66,6 +66,10 @@ module.exports = async (owner, repo, token) => {
       ],
     };
   } catch (error) {
+    core.debug(`thrown error prior to return\n${JSON.stringify(error)}`);
+    core.debug("returning error now to main");
+    // if err.message is bad creds, then return with bad creds
+    // else return with internal error
     return error;
   }
 };
@@ -85,6 +89,7 @@ async function properSecretValue(token, owner, repo) {
     // we don't get resp with bad token because createDisEvent throws error with bad creds
     return response.status;
   } catch (error) {
+    core.debug(error.message);
     if (
       error.message !== "Bad credentials" &&
       error.message !== "Parameter token or opts.auth is required"
