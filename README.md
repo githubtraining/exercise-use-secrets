@@ -27,7 +27,7 @@ Please complete the instructions below:
 1. Create your own copy of this repository by using the [Use this template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) button.
 2. Create a new, or use an existing Personal Access Token that has the `repo` scope enabled.
 3. Create a new secret in your copy of this repository that contains the value of the Personal Access Token you wish to use.
-4. Pass the secret to the local action `check-secrets-action`. The action is used in a workflow titled `use-secrets.yml`.
+4. Pass the secret to the local action `check-secrets-action` using the key `your-secret`. The action is used in a workflow titled `use-secrets.yml`.
 
 <!-- Add your steps below starting with step 2 -->
 
