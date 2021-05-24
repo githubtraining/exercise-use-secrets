@@ -51,8 +51,10 @@ Use these to help you!
 
 Resources specific to this lab:
 
-- [Events that trigger workflows - GitHub Docs]
 - [Personal Access Token - GitHub Docs]
+- [Encrypted secrets - GitHub Docs]
+- [Workflow syntax for GitHub Actions - GitHub Docs]
+
 <!-- - Add further resources for the learner -->
 
 Resources for working with labs and GitHub Actions in general:
@@ -76,3 +78,5 @@ Links used throughout this README:
 [about billing for github actions]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/about-billing-for-github-actions
 [github actions]: https://docs.github.com/en/actions
 [personal access token - github docs]: https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+[Encrypted secrets - Github Docs]: https://docs.github.com/en/actions/reference/encrypted-secrets
+[Workflow syntax for GitHub Actions - GitHub Docs]: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith
