@@ -2,8 +2,6 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 
 module.exports = async (owner, repo, token) => {
-  // if it has less than 1 secret... set the payload artifact to incorrect, no secret exists
-  // return
   try {
     const secretsContext = core.getInput("secrets-context");
     const keysFromCtx = Object.keys(JSON.parse(secretsContext));
@@ -26,9 +24,6 @@ module.exports = async (owner, repo, token) => {
       };
     }
 
-    // if the value is not the username... set the payload artifact to incorrect, wrong value
-    // return00
-
     const secretValueStatusCode = await properSecretValue(token, owner, repo);
 
     if (secretValueStatusCode !== 204) {
@@ -42,14 +37,13 @@ module.exports = async (owner, repo, token) => {
             msg: "Solution COULD be incorrect",
             error: {
               expected: "HTTP response of 204",
-              got: `HTTP response of ${secretValueStatusCode} which could indicate an internal error.  Please open an issue at: https://github.com/githubtraining/lab-use-secrets and let us know!  Thank you`,
+              got: `HTTP response of ${secretValueStatusCode} which could indicate an internal error.  Please open an issue at: https://github.com/githubtraining/exercise-use-secrets and let us know!  Thank you`,
             },
           },
         ],
       };
     }
 
-    // if all 3 things are right then set artifcat to success
     return {
       reports: [
         {
@@ -66,10 +60,6 @@ module.exports = async (owner, repo, token) => {
       ],
     };
   } catch (error) {
-    core.debug(`thrown error prior to return\n${JSON.stringify(error)}`);
-    core.debug("returning error now to main");
-    // if err.message is bad creds, then return with bad creds
-    // else return with internal error
     return error;
   }
 };
@@ -86,10 +76,9 @@ async function properSecretValue(token, owner, repo) {
       repo,
       event_type: "token_check",
     });
-    // we don't get resp with bad token because createDisEvent throws error with bad creds
+
     return response.status;
   } catch (error) {
-    core.debug(error.message);
     if (
       error.message !== "Bad credentials" &&
       error.message !== "Parameter token or opts.auth is required"

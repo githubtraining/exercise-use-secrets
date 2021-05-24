@@ -7,7 +7,7 @@ async function run() {
     const token = core.getInput("your-secret");
     const { owner, repo } = github.context.repo;
     const results = await gradeLearner(owner, repo, token);
-    core.debug(results);
+
     if (
       results.reports[0].level === "fatal" ||
       results.reports[0].msg === "Invalid token"
