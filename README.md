@@ -1,26 +1,18 @@
-# Welcome to the Use Secrets lab!
+# Welcome to the Use Secrets exercise!
 
-This lab is an exercise to check your knowledge on using secrets in GitHub Actions workflows. It is automatically graded via a workflow once you have completed the instructions.
+This is an exercise to check your knowledge on using secrets in GitHub Actions workflows. It is automatically graded via a workflow once you have completed the instructions.
 
-**Quick links:**
+## About this exercise
 
-- [About this lab](#about-this-lab)
-- [Instructions](#instructions)
-- [Seeing your result](#seeing-your-result)
-- [Troubleshooting](#troubleshooting)
-- [Useful resources](#useful-resources)
+:warning: A grading script exists under `.github/workflows/grading.yml`. You do not need to use this workflow for any purpose and **altering its contents will affect the repository's ability to assess your exercise and give feedback.**
 
-## About this lab
+:warning: This exercise utilizes [GitHub Actions](https://docs.github.com/en/actions), which is free for public repositories and self-hosted runners, but may incur charges on private repositories. See _[About billing for GitHub Actions]_ to learn more.
 
-:warning: A grading script exists under `.github/workflows/grading.yml`. You do not need to use this workflow for any purpose and **altering its contents will affect the repository's ability to assess your lab and give feedback.**
-
-:warning: This lab utilizes [GitHub Actions](https://docs.github.com/en/actions), which is free for public repositories and self-hosted runners, but may incur charges on private repositories. See _[About billing for GitHub Actions]_ to learn more.
-
-:information_source: The use of GitHub actions also means that it may take the grading workflow a few seconds and sometimes minutes to run.
+:information_source: The use of GitHub Actions also means that it may take the grading workflow a few seconds and sometimes minutes to run.
 
 ## Instructions
 
-<!-- Specific instructions for your lab -->
+<!-- Specific instructions for your exercise -->
 
 Please complete the instructions below:
 
@@ -33,7 +25,7 @@ Please complete the instructions below:
 
 ## Seeing your result
 
-Your lab is graded automatically once you have completed the instructions. To see the result of your lab, <!-- specify expected Looking Glass display_type -->, <!-- specific place to look -->.
+Your exercise is graded automatically once you have completed the instructions. To see the result of your exercise, go to the Actions tab, and see the most recent run on the "Use secrets" or "Grading" workflows. <!-- specify expected Looking Glass display_type -->, <!-- specific place to look -->.
 
 If the workflow failed, scroll down to the **Annotations** section to check what went wrong.
 
@@ -49,7 +41,7 @@ See _[Running a workflow on GitHub]_ if you need assistance.
 
 Use these to help you!
 
-Resources specific to this lab:
+Resources specific to this exercise:
 
 - [Personal Access Token - GitHub Docs]
 - [Encrypted secrets - GitHub Docs]
@@ -57,7 +49,7 @@ Resources specific to this lab:
 
 <!-- - Add further resources for the learner -->
 
-Resources for working with labs and GitHub Actions in general:
+Resources for working with exericses and GitHub Actions in general:
 
 - [Creating a repository from a template]
 - [Viewing workflow run history]
