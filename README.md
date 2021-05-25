@@ -17,7 +17,7 @@ This is an exercise to check your knowledge on using secrets in GitHub Actions w
 Please complete the instructions below:
 
 1. Create your own copy of this repository by using the [Use this template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) button.
-2. Create a new, or use an existing Personal Access Token that has the `repo` scope enabled.
+2. If you don't have any [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token), create one with the `repo` scope selected. If you already have one or multiple Personal Access Tokens, skip to step 3.
 3. Create a new secret in your copy of this repository that contains the value of the Personal Access Token you wish to use.
 4. Pass the secret to the local action `check-secrets-action` using the input key `your-secret`. The action is used in a workflow titled `use-secrets.yml`.
 
@@ -25,7 +25,7 @@ Please complete the instructions below:
 
 ## Seeing your result
 
-Your exercise is graded automatically once you have completed the instructions. To see the result of your exercise, go to the Actions tab, and see the most recent run on the "Use secrets" or "Grading" workflows. <!-- specify expected Looking Glass display_type -->, <!-- specific place to look -->.
+Your exercise is graded automatically once you have completed the instructions. To see the result of your exercise, go to the Actions tab, and see the most recent run on the "Use secrets" or "Grading" workflows. <!-- specify expected Looking Glass display_type --><!-- specific place to look -->
 
 If the workflow failed, scroll down to the **Annotations** section to check what went wrong.
 
@@ -49,7 +49,7 @@ Resources specific to this exercise:
 
 <!-- - Add further resources for the learner -->
 
-Resources for working with exericses and GitHub Actions in general:
+Resources for working with exercises and GitHub Actions in general:
 
 - [Creating a repository from a template]
 - [Viewing workflow run history]
