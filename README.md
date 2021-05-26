@@ -10,6 +10,8 @@ This is an exercise to check your knowledge on using secrets in GitHub Actions w
 
 :information_source: The use of GitHub Actions also means that it may take the grading workflow a few seconds and sometimes minutes to run.
 
+:closed_lock_with_key: This exercise asks you to create a personal access token (PAT) with `repo` scope. This step is a prerequisite of the exercise, and you should already be comfortable with PATs on GitHub before proceeding. The PAT is encrypted and used only by the local action [`check-secrets-action`](.github/actions/check-secrets-action) and does not leave your repository. GitHub has safeguards in place if the PAT is exposed by mistake, but you should know that if someone gains access to your PAT they would have access to your GitHub repositories. To be safe, we recommend destroying or regenerating the token once you've completed this exercise. See _[Personal Access Token - GitHub Docs]_ and _[`repo` scope]_ for more information.
+
 ## Instructions
 
 <!-- Specific instructions for your exercise -->
@@ -72,5 +74,6 @@ Links used throughout this README:
 [about billing for github actions]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/about-billing-for-github-actions
 [github actions]: https://docs.github.com/en/actions
 [personal access token - github docs]: https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+[`repo` scope](https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes)
 [Encrypted secrets - Github Docs]: https://docs.github.com/en/actions/reference/encrypted-secrets
 [Workflow syntax for GitHub Actions - GitHub Docs]: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith
