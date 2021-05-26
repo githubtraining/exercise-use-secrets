@@ -18,14 +18,14 @@ Please complete the instructions below:
 
 1. Create your own copy of this repository by using the [Use this template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) button.
 2. Create a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo` scope selected.
-3. Create a new secret in your copy of this repository that contains the value of the Personal Access Token you created.
+3. Create a new secret in your copy of this repository that contains the value of the **Personal Access Token** you created.
 4. Pass the secret to the local action `check-secrets-action` using the input key `your-secret`. The action is used in a workflow titled `use-secrets.yml`.
 
 <!-- Add your steps below starting with step 2 -->
 
 ## Seeing your result
 
-Your exercise is graded automatically once you have completed the instructions. To see the result of your exercise, go to the Actions tab, and see the most recent run on the "Use secrets" or "Grading" workflows. <!-- specify expected Looking Glass display_type --><!-- specific place to look -->
+Your exercise is graded automatically once you have completed the instructions. To see the result of your exercise, go to the **Actions** tab, and see the most recent run on the **Use secrets** or **Grading** workflows. <!-- specify expected Looking Glass display_type --><!-- specific place to look -->
 
 ![](https://user-images.githubusercontent.com/6351798/119396166-c0736580-bc91-11eb-8bd8-02abddbcf50a.png)
 
