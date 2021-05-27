@@ -19,4 +19,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: troubleshooting steps
-        run: echo "If you're stuck this documentation may be helpful, https://docs.github.com/en/actions/reference/encrypted-secrets."
+        run: echo "If you're stuck, this documentation may be helpful; https://docs.github.com/en/actions/reference/encrypted-secrets"
