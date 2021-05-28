@@ -31,8 +31,6 @@ Your exercise is graded automatically once you have completed the instructions. 
 
 ![](https://user-images.githubusercontent.com/6351798/119396166-c0736580-bc91-11eb-8bd8-02abddbcf50a.png)
 
-If the workflow failed, scroll down to the **Annotations** section to check what went wrong.
-
 See _[Viewing workflow run history]_ if you need assistance.
 
 ## Troubleshooting
