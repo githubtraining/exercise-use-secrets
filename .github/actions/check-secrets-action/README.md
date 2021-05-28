@@ -14,7 +14,7 @@ There are two inputs necessary for this action to run and provide a grade for th
 - Counts the number of secrets the repository has to ensure the learner added a secret.
 - Attempts to perform an HTTP request using Octokit and the provided secret to validate that the secret contains a valid PAT.
 - Reports errors and failures in the actions runner of the `use-secrets.yml` workflow
-- Sends certain errors and success messages to the `grading.yml` workflow
+- Sends certain error and success messages to the `grading.yml` workflow
 
 ## What happens with your Personal Access Token?
 
