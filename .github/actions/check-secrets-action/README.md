@@ -28,7 +28,7 @@ In the `use-secrets-action` we use [Octokit](https://github.com/octokit) to crea
 
 ## Summary
 
-- The PAT you create **stays in your repo**
+- The PAT you create **stays in your repo**.
 - The `check-secrets-action` never exposes the value of the secret you pass into the action.
 - An HTTP request is made using Octokit with the supplied PAT for authentication
 - A report is generated and displayed in the actions runner
