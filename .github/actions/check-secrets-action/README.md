@@ -1,6 +1,6 @@
 # Check Secrets Action
 
-This local action runs whenever a change to the `.github/workflows/use-secrets.yml` is pushed to your repository.
+This local action runs whenever a change to the `.github/workflows/use-secrets.yml` workflow is pushed to your repository.
 
 There are two inputs necessary for this action to run and provide a grade for this exercise:
 
