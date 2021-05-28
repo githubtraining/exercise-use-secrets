@@ -10,7 +10,7 @@ This is an exercise to check your knowledge on using secrets in GitHub Actions w
 
 :information_source: The use of GitHub Actions also means that it may take the grading workflow a few seconds and sometimes minutes to run.
 
-:closed_lock_with_key: This exercise asks you to create a personal access token (PAT) with `repo` scope. This step is a prerequisite of the exercise, and you should already be comfortable with PATs on GitHub before proceeding. The PAT is encrypted and used only by the local action [`check-secrets-action`](.github/actions/check-secrets-action) and does not leave your repository. GitHub has safeguards in place if the PAT is exposed by mistake, but you should know that if someone gains access to your PAT they would have access to your GitHub repositories. To be safe, we recommend destroying or regenerating the token once you've completed this exercise. If you'd like to learn more about how [`check-secrets-action`](.github/actions/check-secrets-action) uses your PAT you can view the this action's [documentation](.github/acitons/check-secrets-action/README.md).  See _[Personal Access Token - GitHub Docs]_ and _[`repo` scope]_ for more information.
+:closed_lock_with_key: This exercise asks you to create a personal access token (PAT) with the `repo` scope. This step is a prerequisite of the exercise, and you should already be comfortable with PATs on GitHub before proceeding. The PAT is encrypted and used only by the local action [`check-secrets-action`](.github/actions/check-secrets-action) and does not leave your repository. GitHub has safeguards in place if the PAT is exposed by mistake, but you should know that if someone gains access to your PAT, they would have access to your GitHub repositories. To be safe, we recommend destroying or regenerating the token once you've completed this exercise. If you'd like to learn more about how [`check-secrets-action`](.github/actions/check-secrets-action) uses your PAT, check the action's [documentation](.github/acitons/check-secrets-action/README.md). Check out _[Personal Access Token - GitHub Docs]_ and _[`repo` scope]_ for more information.
 
 ## Instructions
 
@@ -19,8 +19,8 @@ This is an exercise to check your knowledge on using secrets in GitHub Actions w
 Please complete the instructions below:
 
 1. Create your own copy of this repository by using the [Use this template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) button.
-2. Create a [Personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo` scope selected.
-3. Create a new secret in your copy of this repository that contains the value of the **Personal access token** you created.
+2. Create a [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo` scope selected.
+3. Create a new secret in your copy of this repository that contains the value of the personal access token you created.
 4. Pass the secret to the local action `check-secrets-action` using the input key `your-secret`. The action is used in a workflow titled `use-secrets.yml`.
 
 <!-- Add your steps below starting with step 2 -->
