@@ -6,7 +6,7 @@ There are two inputs necessary for this action to run and provide a grade for th
 
 | Input           | Description                                                                                                                                                                                                                             | Required |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------: |
-| secrets-context | This a JSON formatted Object containing the [secrets context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#contexts) for the repository from which the `use-secrets.yml` was triggered |         ✅         |
+| `secrets-context` | JSON-formatted object containing the [secrets context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#contexts) for the repository from which the `use-secrets.yml` workflow was triggered |         Yes         |
 | `your-secret`     | The value of this input should be a personal access token (PAT) with a repo scope. This PAT should be passed in the form of a repository secret in the `use-secrets.yml` workflow . **Do not** place the raw value of the PAT into the `use-secrets.yml` workflow!  |         Yes         |
 
 ## What checks does this action conduct?
