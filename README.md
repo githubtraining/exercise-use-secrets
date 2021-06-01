@@ -10,6 +10,8 @@ This is an exercise to check your knowledge on using secrets in GitHub Actions w
 
 :information_source: The use of GitHub Actions also means that it may take the grading workflow a few seconds and sometimes minutes to run.
 
+:closed_lock_with_key: This exercise asks you to create a personal access token (PAT) with the `repo` scope. This step is a prerequisite of the exercise, and you should already be comfortable with PATs on GitHub before proceeding. The PAT is encrypted and used only by the local action [`check-secrets-action`](.github/actions/check-secrets-action) and does not leave your repository. GitHub has safeguards in place if the PAT is exposed by mistake, but you should know that if someone gains access to your PAT, they would have access to your GitHub repositories. To be safe, we recommend destroying or regenerating the token once you've completed this exercise. If you'd like to learn more about how [`check-secrets-action`](.github/actions/check-secrets-action) uses your PAT, check the action's [documentation](.github/acitons/check-secrets-action/README.md). Check out _[Personal Access Token - GitHub Docs]_ and _[`repo` scope]_ for more information.
+
 ## Instructions
 
 <!-- Specific instructions for your exercise -->
@@ -17,17 +19,17 @@ This is an exercise to check your knowledge on using secrets in GitHub Actions w
 Please complete the instructions below:
 
 1. Create your own copy of this repository by using the [Use this template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) button.
-2. Create a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo` scope selected.
-3. Create a new secret in your copy of this repository that contains the value of the Personal Access Token you created.
+2. Create a [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo` scope selected.
+3. Create a new secret in your copy of this repository that contains the value of the personal access token you created.
 4. Pass the secret to the local action `check-secrets-action` using the input key `your-secret`. The action is used in a workflow titled `use-secrets.yml`.
 
 <!-- Add your steps below starting with step 2 -->
 
 ## Seeing your result
 
-Your exercise is graded automatically once you have completed the instructions. To see the result of your exercise, go to the Actions tab, and see the most recent run on the "Use secrets" or "Grading" workflows. <!-- specify expected Looking Glass display_type --><!-- specific place to look -->
+Your exercise is graded automatically once you have completed the instructions. To see the result of your exercise, go to the **Actions** tab, and see the most recent run on the **Use secrets** or **Grading** workflows. <!-- specify expected Looking Glass display_type --><!-- specific place to look -->
 
-If the workflow failed, scroll down to the **Annotations** section to check what went wrong.
+![](https://user-images.githubusercontent.com/6351798/119396166-c0736580-bc91-11eb-8bd8-02abddbcf50a.png)
 
 See _[Viewing workflow run history]_ if you need assistance.
 
@@ -70,5 +72,6 @@ Links used throughout this README:
 [about billing for github actions]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/about-billing-for-github-actions
 [github actions]: https://docs.github.com/en/actions
 [personal access token - github docs]: https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+[`repo` scope]: https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
 [Encrypted secrets - Github Docs]: https://docs.github.com/en/actions/reference/encrypted-secrets
 [Workflow syntax for GitHub Actions - GitHub Docs]: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith
