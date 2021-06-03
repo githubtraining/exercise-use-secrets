@@ -16,15 +16,15 @@ There are two inputs necessary for this action to run and provide a grade for th
 - Reports errors and failures in the actions runner of the `use-secrets.yml` workflow
 - Sends certain error and success messages to the `grading.yml` workflow
 
-## What happens with your Personal Access Token?
+## What happens with your personal access token?
 
-A personal Access Token is needed to allow the `use-secrets.yml` workflow to communicate to the `grading.yml` workflow using a [`repository_dispatch`](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#repository_dispatch) event.
+A personal access token is needed to allow the `use-secrets.yml` workflow to communicate to the `grading.yml` workflow using a [`repository_dispatch`](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#repository_dispatch) event.
 
-There is a built in feature of GitHub Actions that prevents one workflow from triggering another, even through the use of a `repository_dispatch` event, if the authentication for the workflow is provided by the `GITHUB_TOKEN`.
+A built-in feature of GitHub Actions prevents one workflow from triggering another, even through the use of a `repository_dispatch` event, if the authentication for the workflow is provided by the `GITHUB_TOKEN`.
 
-However, if the first workflow is supplied a [properly scoped](https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event) Personal Access Token, GitHub Actions will allow this workflow to trigger other workflow runs.
+However, if the first workflow is supplied a [properly scoped](https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event) PAT, GitHub Actions will allow this workflow to trigger other workflow runs.
 
-In the `use-secrets-action` we use [Octokit](https://github.com/octokit) to create the repository dispatch using your PAT as the authentication that allows for one workflow to trigger another. You can read more about the [Octokit method](https://octokit.github.io/rest.js/v18#repos-create-dispatch-event) being used to make this HTTP request if you'd like to learn more.
+In the `check-secrets-action` we use [Octokit](https://github.com/octokit) to create the repository dispatch using your PAT as the authentication that allows for one workflow to trigger another. You can read more about the [Octokit method](https://octokit.github.io/rest.js/v18#repos-create-dispatch-event) being used to make this HTTP request if you'd like to learn more.
 
 ## Summary
 
