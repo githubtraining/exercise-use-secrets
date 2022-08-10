@@ -4,7 +4,7 @@ const gradeLearner = require("./lib/gradeLearner");
 
 async function run() {
   try {
-    const token = core.getInput("your-secret");
+    const token = core.getInput("my_token");
     const { owner, repo } = github.context.repo;
     const results = await gradeLearner(owner, repo, token);
 
